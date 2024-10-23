@@ -1,0 +1,56 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Add comments",
+        "version": "1.0"
+    },
+    "paths": {
+        "/comments": {
+            "post": {
+                "summary": "Add a comment to a post or video",
+                "operationId": "a0c0613c248bc727d51299e2eb03d2e3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "body",
+                                    "commentable_id",
+                                    "commentable_type"
+                                ],
+                                "properties": {
+                                    "body": {
+                                        "type": "string"
+                                    },
+                                    "commentable_id": {
+                                        "type": "integer"
+                                    },
+                                    "commentable_type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "post",
+                                            "video"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Comment added successfully"
+                    },
+                    "404": {
+                        "description": "Invalid commentable type or resource not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        }
+    }
+}
